@@ -18,7 +18,8 @@ public class App
     
         int[] nums3 = {10, 5, 2, 6};
         System.out.println(slidingWindows.numSubarrayProductLessThanK(nums3,100));
-
-
+        
+        int[] nums4 = {1,2,3,7,5};
+        System.out.println(slidingWindows.subarraySumEqualK(nums, 12));
     }
 }

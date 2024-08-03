@@ -1,5 +1,8 @@
 package com.didate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SlidingWindows {
     
 
@@ -73,6 +76,40 @@ public class SlidingWindows {
             }
             result += right - left +1;
         }
+        return result;
+    }
+
+    /**
+     * Given an unsorted array arr of size n that contains only non negative integers, 
+     * find a sub-array (continuous elements) that has sum equal to k. 
+     * You mainly need to return the left and right indexes(1-based indexing) of that subarray.
+     * In case of multiple subarrays, return the subarray indexes which come first on moving from left to right. 
+     * If no such subarray exists return an array consisting of element -1.
+     * @param arr
+     * @param n
+     * @param k
+     * @return
+     */
+    public static List<Integer> subarraySumEqualK(int[] arr, int k) {
+        ArrayList<Integer> result = new ArrayList<>();
+        int left =0;
+        int sum =0;
+        
+        for(int right =0; right<arr.length; right++){
+            
+            sum+=arr[right];
+            
+            while(sum > k && left<right){
+                sum-=arr[left];
+                left++;
+            }
+            if(sum==k){
+                result.add(left+1);
+                result.add(right+1);
+                return result;
+            }
+        }
+        result.add(-1);
         return result;
     }
    
