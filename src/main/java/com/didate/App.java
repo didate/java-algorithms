@@ -21,5 +21,8 @@ public class App
         
         int[] nums4 = {1,2,3,7,5};
         System.out.println(slidingWindows.subarraySumEqualK(nums, 12));
+
+        int[]  nums5 = { 5, 7, 1, 4, 3, 6, 2, 9, 2 };
+        System.out.println(slidingWindows.maxSumOfKContiguousElements(nums5, 5));
     }
 }
