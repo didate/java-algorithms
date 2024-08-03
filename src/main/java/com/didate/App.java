@@ -16,6 +16,8 @@ public class App
         int[] nums2 ={1,1,0,1,1,0,0,1,1,1};
         System.out.println(slidingWindows.lengthOfLongestSubarrayContaining0(nums2));
     
+        int[] nums3 = {10, 5, 2, 6};
+        System.out.println(slidingWindows.numSubarrayProductLessThanK(nums3,100));
 
 
     }

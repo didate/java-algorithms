@@ -31,7 +31,6 @@ public class SlidingWindows {
      */
     public int lengthOfLongestSubarrayContaining0(int[] nums){
 
-        //s = "110110111"
         int left = 0;
         int length=0;
         int numberOf0=0;
@@ -50,6 +49,31 @@ public class SlidingWindows {
             
         }
         return length;
+    }
+    /**
+     * Given an array of positive integers nums and an integer k, 
+     * return the number of subarrays where the product of all the elements in the subarray is strictly less than k
+     * Example : nums = [10, 5, 2, 6], k = 100 , result = 8 subarrays =>
+     * [10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int numSubarrayProductLessThanK(int[] nums, int k){
+        int left =0;
+        int result=0;
+        int product=1;
+
+        for (int right = 0; right < nums.length; right++) {
+            product *=nums[right];
+
+            while(product >= k){
+                product /=nums[left];
+                left++;
+            }
+            result += right - left +1;
+        }
+        return result;
     }
    
 
