@@ -1,34 +1,11 @@
 package com.didate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class SlidingWindows {
 
-    /**
-     * Given an array of positive integers nums and an integer k,
-     * find the length of the longest subarray whose sum is less than or equal to k
-     */
-    public int lengthLongestSubarraySumLessThanEqualK(int[] nums, int k) {
-
-        int left = 0;
-        int sum = 0;
-        int length = 0;
-
-        for (int right = 0; right < nums.length; right++) {
-            sum += nums[right];
-            while (sum > k) {
-                sum -= nums[left];
-                left++;
-            }
-            length = Math.max(length, right - left + 1);
-        }
-        return length;
-    }
-
+    
     /**
      * You are given an array of binary int s ( containing only 0 and 1).
      * You may choose up to one "0" and flip it to a "1".
