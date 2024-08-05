@@ -1,6 +1,8 @@
 package com.didate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class SlidingWindows {
@@ -139,6 +141,41 @@ public class SlidingWindows {
 
         }
         return max;
+    }
+
+     
+    /**
+     * Given a string and an integer k, 
+     * find the length of the longest substring that contains at most k distinct characters.
+     */
+    public int longestSubstringContainsAtMostK(String s, int k){
+        int left =0;
+        int distinct=0;
+        String subString="";
+        int result=0;
+
+        for (int right = 0; right < s.length(); right++) {
+            char currChar = s.charAt(right);
+            if(!subString.contains(String.valueOf(currChar))){
+                distinct++;
+            }
+            subString+=s.charAt(right);
+
+            while(distinct>k && left<=right){
+               HashSet<String> set = new HashSet<String>(Arrays.asList(s.substring(left, right+1).split("")));
+               if(set.size()>k){
+                left++;
+                subString = subString.substring(1, subString.length());
+               }else{
+                distinct--;
+               }
+               
+            }
+
+            result = Math.max(result, subString.length());
+            
+        }
+        return result;
     }
 
 }

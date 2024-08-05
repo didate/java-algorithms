@@ -24,5 +24,10 @@ public class App
 
         int[]  nums5 = { 5, 7, 1, 4, 3, 6, 2, 9, 2 };
         System.out.println(slidingWindows.maxSumOfKContiguousElements(nums5, 5));
+
+        System.out.println(slidingWindows.longestSubstringContainsAtMostK("araaci", 2));
+
+        System.out.println(slidingWindows.longestSubstringContainsAtMostK("araaci", 1));
+        System.out.println(slidingWindows.longestSubstringContainsAtMostK("cbbebi", 3));
     }
 }
