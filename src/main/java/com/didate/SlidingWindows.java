@@ -2,6 +2,7 @@ package com.didate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -147,35 +148,33 @@ public class SlidingWindows {
     /**
      * Given a string and an integer k, 
      * find the length of the longest substring that contains at most k distinct characters.
+     * Example: s = "araaci" and k = 2 => longestString = "araa", length =4
      */
-    public int longestSubstringContainsAtMostK(String s, int k){
-        int left =0;
-        int distinct=0;
-        String subString="";
-        int result=0;
+    public int longestSubstringContainsAtMostK(String s, int k) {
+        if (s == null || s.isEmpty() || k == 0)
+            return 0;
+
+        int left = 0;
+        int maxLength = 0;
+        HashMap<Character, Integer> charFrequencyMap = new HashMap<>();
 
         for (int right = 0; right < s.length(); right++) {
-            char currChar = s.charAt(right);
-            if(!subString.contains(String.valueOf(currChar))){
-                distinct++;
-            }
-            subString+=s.charAt(right);
+            char rightChar = s.charAt(right);
+            charFrequencyMap.put(rightChar, charFrequencyMap.getOrDefault(rightChar, 0) + 1);
 
-            while(distinct>k && left<=right){
-               HashSet<String> set = new HashSet<String>(Arrays.asList(s.substring(left, right+1).split("")));
-               if(set.size()>k){
-                left++;
-                subString = subString.substring(1, subString.length());
-               }else{
-                distinct--;
-               }
-               
+            // Shrink the window until we have at most k distinct characters
+            while (charFrequencyMap.size() > k) {
+                char leftChar = s.charAt(left);
+                charFrequencyMap.put(leftChar, charFrequencyMap.get(leftChar) - 1);
+                if (charFrequencyMap.get(leftChar) == 0) {
+                    charFrequencyMap.remove(leftChar);
+                }
+                left++; // shrink the window
             }
-
-            result = Math.max(result, subString.length());
-            
+            maxLength = Math.max(maxLength, right - left + 1);
         }
-        return result;
+
+        return maxLength;
     }
 
 }
