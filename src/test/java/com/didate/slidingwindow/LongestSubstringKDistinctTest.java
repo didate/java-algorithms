@@ -1,4 +1,4 @@
-package com.didate;
+package com.didate.slidingwindow;
 
 import static org.junit.Assert.assertEquals;
 
