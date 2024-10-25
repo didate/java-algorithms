@@ -53,4 +53,11 @@ public class SearchPatternTest {
         List<Integer> result = searchPattern.search(text, pattern);
         assertEquals(expected, result);
     }
+
+    @Test
+    public void testRabinKarpearch() {
+        SearchPattern searchPattern = new SearchPattern();
+        List<Integer> result = searchPattern.rabinKarp(text, pattern);
+        assertEquals(expected, result);
+    }
 }
