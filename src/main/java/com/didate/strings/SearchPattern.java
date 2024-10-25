@@ -28,5 +28,29 @@ public class SearchPattern {
         return indexes;
     }
 
-    
+    /**
+     * Exemple : text = ABAABC  ABADAB, pattern = ABA
+     * Result = (0,6)
+     * Time complexity : O(n)
+     * @param text
+     * @param pattern
+     * @return
+     * 
+     */
+    public List<Integer> search(String text, String pattern){
+        List<Integer> indexes = new ArrayList<>();
+        int patternLength = pattern.length();
+
+        if(patternLength > text.length()){
+            return indexes;
+        }
+
+        for(int i=0; i<=text.length() - patternLength; i++){
+            if(text.substring(i, i + patternLength).equals(pattern)){
+                indexes.add(i);
+            }
+        }
+
+        return indexes;
+    }
 }

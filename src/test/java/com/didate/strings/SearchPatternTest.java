@@ -47,5 +47,10 @@ public class SearchPatternTest {
         assertEquals(expected, result);
     }
 
-    
+    @Test
+    public void testSearch() {
+        SearchPattern searchPattern = new SearchPattern();
+        List<Integer> result = searchPattern.search(text, pattern);
+        assertEquals(expected, result);
+    }
 }
