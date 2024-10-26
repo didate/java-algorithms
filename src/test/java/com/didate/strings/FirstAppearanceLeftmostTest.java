@@ -42,4 +42,9 @@ public class FirstAppearanceLeftmostTest {
     public void testRepeatedCharacter() {
         assertEquals(expectedIndex, FirstAppearanceLeftmost.repeatedCharacter(inputString));
     }
+
+    @Test
+    public void testRepeatedCharacter2() {
+        assertEquals(expectedIndex, FirstAppearanceLeftmost.repeatedCharacter2(inputString));
+    }
 }

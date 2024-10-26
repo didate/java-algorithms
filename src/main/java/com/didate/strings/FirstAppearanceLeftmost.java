@@ -31,4 +31,22 @@ public class FirstAppearanceLeftmost {
         }
         return -1;
     }
+
+    static int repeatedCharacter2(String S) {
+        LinkedHashMap<Character, Integer> charactersMap = new LinkedHashMap<>();
+        int index = Integer.MAX_VALUE;
+
+        for (int i = 0; i < S.length(); i++) {
+            Character currentChar = S.charAt(i);
+
+            if(charactersMap.containsKey(currentChar)){
+                index = Math.min(index, charactersMap.get(currentChar));
+            }else{
+                charactersMap.put(currentChar, i);
+            }
+        }
+
+
+        return index == Integer.MAX_VALUE ? -1 : index;
+    }
 }
