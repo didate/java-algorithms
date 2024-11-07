@@ -1,20 +1,21 @@
-package com.didate.strings;
+package com.didate.recursivity;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import java.util.Arrays;
-import java.util.Collection;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class PalindromeTest {
-
+public class PalindromCheckTest {
+    
     private final String input;
     private final boolean expected;
 
-    public PalindromeTest(String input, boolean expected) {
+    public PalindromCheckTest(String input, boolean expected) {
         this.input = input;
         this.expected = expected;
     }
@@ -34,6 +35,6 @@ public class PalindromeTest {
 
     @Test
     public void testPalindrome() {
-        assertEquals(expected, Palindrome.check(input));
+        assertEquals(expected,  PalindromCheck.check(input, 0, input.length()-1));
     }
 }
